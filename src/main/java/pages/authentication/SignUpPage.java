@@ -12,10 +12,10 @@ public class SignUpPage {
     private NavBar nav;
     private ElementActions elActions;
     //fields
-    private By signup_name=By.cssSelector("[data-qa='signup-name']");
-    private By signup_email=By.cssSelector("[data-qa='signup-email']");
-    private By signup_button=By.cssSelector("[data-qa='signup-button']");
-
+    private final By signup_name=By.cssSelector("[data-qa='signup-name']");
+    private final By signup_email=By.cssSelector("[data-qa='signup-email']");
+    private final By signup_button=By.cssSelector("[data-qa='signup-button']");
+    private final By ERROR_MSG=By.cssSelector(".signup-form .alert-danger, .signup-form p");
     public SignUpPage(WebDriver driver){
         this.driver=driver;
         this.nav=new NavBar(driver);
@@ -33,6 +33,15 @@ public class SignUpPage {
     public void signupClick(){
         elActions.click(signup_button);
     }
-
-
+    public boolean isStillOnStep1() {
+        try {
+            elActions.visible(By.cssSelector("[data-qa='signup-name']"));
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+    public boolean errorContains(String partialText) {
+        return elActions.waitTextPresent(ERROR_MSG, partialText);
+    }
 }

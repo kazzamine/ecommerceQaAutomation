@@ -28,4 +28,20 @@ public class SignUpTest extends TestBase {
         signUp1.signupClick();
         Assert.assertTrue(sign2ndStep.isAt());
     }
+
+    @Epic("Authentication & account")
+    @Story("negative test : 1st sign up step")
+    @Severity(SeverityLevel.CRITICAL)
+    @Feature("Sign up 1st step : negative")
+    @Test
+    public void signUpStep1NegativeTest(){
+        driver.get(baseUrl);
+        HomePage homePage=new HomePage(driver);
+        homePage.navBar().goToSignInUp();
+        SignUpPage signUp1=new SignUpPage(driver).waitUrlNavigated();
+        signUp1.fillSignUpFirstStep(TestData.DEFAULT_NAME,TestData.uniqueEmail());
+        signUp1.signupClick();
+        Assert.assertTrue(signUp1.isStillOnStep1());
+        Assert.assertTrue(signUp1.errorContains("Email Address already exist!"));
+    }
 }
