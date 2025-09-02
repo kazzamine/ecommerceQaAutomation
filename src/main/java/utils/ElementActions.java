@@ -1,7 +1,10 @@
 package utils;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
+
+import javax.swing.*;
 
 public class ElementActions {
 
@@ -27,6 +30,17 @@ public class ElementActions {
         WebElement el = visible(loc);
         el.clear();
         el.sendKeys(text);
+    }
+
+    public void inputNumber(By loc,String direction) {
+        WebElement el = visible(loc);
+        if(direction.equals("up")) {
+            el.sendKeys(Keys.ARROW_UP);
+        }else if(direction.equals("down")) {
+            el.sendKeys(Keys.ARROW_DOWN);
+        }else {
+            throw new RuntimeException("Invalid direction: " + direction);
+        }
     }
 
     public void typeStrict(By loc, String text) {
@@ -74,5 +88,9 @@ public class ElementActions {
 
     public void pause(int seconds) {
         WaitHelper.pause(seconds);
+    }
+    public void scrollToElement(By locator) {
+        WebElement element = wait.waitForVisibility(locator);
+        new Actions(driver).moveToElement(element).perform();
     }
 }

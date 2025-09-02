@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="automationTest Suite">
+    <test name="Accounts authentication Tests">
+        <classes>
+            <class name="tests.LoginTest"/>
+            <class name="tests.SignUpTest"/>
+        </classes>
+    </test>
+    <test name="products tests">
+        <classes>
+            <class name="tests.products.ProductsHomeTest"/>
+        </classes>
+    </test>
+</suite>

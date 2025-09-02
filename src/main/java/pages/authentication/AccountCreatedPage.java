@@ -2,9 +2,7 @@ package pages.authentication;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import pages.components.NavBar;
 import utils.ElementActions;
-import utils.WaitHelper;
 
 public class AccountCreatedPage {
 

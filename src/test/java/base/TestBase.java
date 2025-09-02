@@ -21,7 +21,8 @@ public abstract class TestBase {
         prefs.put("credentials_enable_service", false);
         prefs.put("profile.password_manager_enabled", false);
         options.setExperimentalOption("prefs", prefs);
-
+        options.addArguments("--disable-popup-blocking");
+        options.addArguments("--disable-features=IsolateOrigins,site-per-process");
         options.addArguments("--disable-notifications", "--disable-infobars");
         driver=new ChromeDriver(options);
         driver.manage().window().maximize();

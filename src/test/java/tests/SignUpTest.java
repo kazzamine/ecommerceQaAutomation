@@ -3,14 +3,12 @@ package tests;
 import base.TestBase;
 import data.TestData;
 import io.qameta.allure.*;
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.authentication.AccountCreatedPage;
 import pages.authentication.SignUpAccInfo;
 import pages.authentication.SignUpPage;
 import pages.homepage.HomePage;
-import utils.ElementActions;
 
 public class SignUpTest extends TestBase {
 
